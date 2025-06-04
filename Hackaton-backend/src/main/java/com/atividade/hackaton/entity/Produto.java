@@ -12,9 +12,12 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private String descricao;
+    private String textoDescritivo;
+    private String cor;
+    private String fabricante;
     private Double preco;
-    private Integer quantidadeEstoque;
+    private Integer quantidade;
+    private String imagem;
 
     // Getters e Setters
     public Long getId() {
@@ -33,12 +36,28 @@ public class Produto {
         this.nome = nome;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getTextoDescritivo() {
+        return textoDescritivo;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setTextoDescritivo(String textoDescritivo) {
+        this.textoDescritivo = textoDescritivo;
+    }
+
+    public String getCor() {
+        return cor;
+    }
+
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
+
+    public String getFabricante() {
+        return fabricante;
+    }
+
+    public void setFabricante(String fabricante) {
+        this.fabricante = fabricante;
     }
 
     public Double getPreco() {
@@ -49,11 +68,19 @@ public class Produto {
         this.preco = preco;
     }
 
-    public Integer getQuantidadeEstoque() {
-        return quantidadeEstoque;
+    public Integer getQuantidade() {
+        return quantidade;
     }
 
-    public void setQuantidadeEstoque(Integer quantidadeEstoque) {
-        this.quantidadeEstoque = quantidadeEstoque;
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 }

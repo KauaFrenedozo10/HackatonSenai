@@ -1,8 +1,8 @@
 package com.atividade.hackaton.service;
 
+import com.atividade.hackaton.ProdutoRepository;
 import com.atividade.hackaton.dto.ProdutoDTO;
 import com.atividade.hackaton.entity.Produto;
-import com.atividade.hackaton.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,9 +19,12 @@ public class ProdutoService {
     public ProdutoDTO criarProduto(ProdutoDTO produtoDTO) {
         Produto produto = new Produto();
         produto.setNome(produtoDTO.getNome());
-        produto.setDescricao(produtoDTO.getDescricao());
+        produto.setTextoDescritivo(produtoDTO.getTextoDescritivo());
+        produto.setCor(produtoDTO.getCor());
+        produto.setFabricante(produtoDTO.getFabricante());
         produto.setPreco(produtoDTO.getPreco());
-        produto.setQuantidadeEstoque(produtoDTO.getQuantidadeEstoque());
+        produto.setQuantidade(produtoDTO.getQuantidade());
+        produto.setImagem(produtoDTO.getImagem());
 
         Produto produtoSalvo = produtoRepository.save(produto);
         return converterParaDTO(produtoSalvo);
@@ -44,9 +47,12 @@ public class ProdutoService {
                 .orElseThrow(() -> new EntityNotFoundException("Produto não encontrado com id: " + id));
 
         produto.setNome(produtoDTO.getNome());
-        produto.setDescricao(produtoDTO.getDescricao());
+        produto.setTextoDescritivo(produtoDTO.getTextoDescritivo());
+        produto.setCor(produtoDTO.getCor());
+        produto.setFabricante(produtoDTO.getFabricante());
         produto.setPreco(produtoDTO.getPreco());
-        produto.setQuantidadeEstoque(produtoDTO.getQuantidadeEstoque());
+        produto.setQuantidade(produtoDTO.getQuantidade());
+        produto.setImagem(produtoDTO.getImagem());
 
         Produto produtoAtualizado = produtoRepository.save(produto);
         return converterParaDTO(produtoAtualizado);
@@ -63,9 +69,12 @@ public class ProdutoService {
         ProdutoDTO produtoDTO = new ProdutoDTO();
         produtoDTO.setId(produto.getId());
         produtoDTO.setNome(produto.getNome());
-        produtoDTO.setDescricao(produto.getDescricao());
+        produtoDTO.setTextoDescritivo(produto.getTextoDescritivo());
+        produtoDTO.setCor(produto.getCor());
+        produtoDTO.setFabricante(produto.getFabricante());
         produtoDTO.setPreco(produto.getPreco());
-        produtoDTO.setQuantidadeEstoque(produto.getQuantidadeEstoque());
+        produtoDTO.setQuantidade(produto.getQuantidade());
+        produtoDTO.setImagem(produto.getImagem());
         return produtoDTO;
     }
 }

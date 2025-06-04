@@ -1,0 +1,10 @@
+-Cadastrar Produtos: que estão no banco
+
+-Consultar Produtos: no front ou seja lista de produtos que estão disponíveis 
+
+-Editar: Editar Produtos do estoque
+
+-Excluir: Produtos do sistema 
+
+ 
+

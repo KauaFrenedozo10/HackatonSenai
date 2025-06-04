@@ -12,15 +12,7 @@
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
         <div class="row login-card shadow overflow-hidden rounded-4 w-100" style="max-width: 1100px;">
             <div class="col-md-6 p-5 bg-white">
-                <div class="d-flex align-items-center mb-4 gap-3">
-                    <img src="../../Recursos/img/logo.png" alt="Logo MentalHelp" style="width: 20%" class="me-2">
-                    <h1 class="m-0 fw-bold text-purple">MentalHelp</h1>
-                    <select id="languageSelect" class="form-select w-auto ms-auto mb-3 mt-4">
-                        <option value="pt">Português</option>
-                        <option value="en">English</option>
-                        <option value="es">Espanhol</option>
-                    </select>
-                </div>
+                
 
                 <h2 id="mainTitle" class="text-center text-purple mb-4">Cadastrar Produto</h2>
 
@@ -34,25 +26,23 @@
 
                 <form>
                     <div class="mb-3 position-relative">
-                        <i class="bi bi-person input-icon"></i>
                         <input type="text" class="form-control custom-input ps-5" id="nomeInput" placeholder="Nome">
                     </div>
-                    <div class="mb-3 position-relative">
-                        <i class="bi bi-envelope input-icon"></i>
-                        <input type="text" class="form-control custom-input ps-5" id="crmInput" placeholder="CRM">
+                    <div class="mb-3 position-relative">                 
+                        <input type="text" class="form-control custom-input ps-5" id="crmInput" placeholder="Descrição">
+                    </div>
+                    <div class="mb-3 position-relative"> 
+                        <input type="email" class="form-control custom-input ps-5" id="emailInput" placeholder="Cor">
                     </div>
                     <div class="mb-3 position-relative">
-                        <i class="bi bi-envelope input-icon"></i>
-                        <input type="email" class="form-control custom-input ps-5" id="emailInput" placeholder="Email">
-                    </div>
-                    <div class="mb-3 position-relative">
-                        <i class="bi bi-lock input-icon"></i>
-                        <input type="password" class="form-control custom-input ps-5 pe-5" id="senhaInput" placeholder="Senha">
+                        <input type="password" class="form-control custom-input ps-5 pe-5" id="senhaInput" placeholder="Fabricante">
                         <i class="bi bi-eye-slash toggle-password"></i>
                     </div>
                     <div class="mb-3 position-relative">
-                        <i class="bi bi-briefcase input-icon"></i>
-                        <input type="text" class="form-control custom-input ps-5" id="especialidadesInput" placeholder="Especialidades">
+                        <input type="text" class="form-control custom-input ps-5" id="especialidadesInput" placeholder="Preco">
+                    </div>
+                    <div class="mb-3 position-relative">
+                        <input type="text" class="form-control custom-input ps-5" id="especialidadesInput" placeholder="Quantidade">
                     </div>
                     <button type="submit" class="btn btn-purple w-100 mb-3" id="btnCadastro">Cadastro</button>
                     <div class="text-center small" id="loginLinkText">
@@ -62,7 +52,7 @@
             </div>
 
             <div class="col-md-6 d-none d-md-block p-0">
-                <img src="../../Recursos/img/ftcadastro.png" alt="Imagem terapêutica" class="img-fluid h-100 w-100 object-fit-cover">
+                <img src="Recursos/cadastroIMG.jpg" alt="Imagem terapêutica" class="img-fluid h-100 w-100 object-fit-cover">
             </div>
         </div>
     </div>

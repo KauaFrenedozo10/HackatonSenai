@@ -1,16 +1,16 @@
 /* Fundo da página */
 body {
-    background-color: #f3e7f8;
+    background-color: #b4b0b6;
 }
 
 /* Cor personalizada */
 .text-purple {
-    color: #4b006e;
+    color: #000000;
 }
 
 /* Botão estilizado */
 .btn-purple {
-    background-color: #4b006e;
+    background-color: #636363;
     color: white;
     border-radius: 999px;
     padding: 10px 0;
@@ -18,7 +18,7 @@ body {
 }
 
 .btn-purple:hover {
-    background-color: #36004e;
+    background-color: #972a2a;
 }
 
 /* Cartão do formulário (ajustado para ser mais largo e sem espaços laterais) */

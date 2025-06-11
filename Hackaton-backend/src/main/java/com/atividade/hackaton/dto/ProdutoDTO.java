@@ -31,12 +31,28 @@ public class ProdutoDTO {
         this.nome = nome;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getTextoDescritivo() {
+        return textoDescritivo;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setTextoDescritivo(String textoDescritivo) {
+        this.textoDescritivo = textoDescritivo;
+    }
+
+    public String getCor() {
+        return cor;
+    }
+
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
+
+    public String getFabricante() {
+        return fabricante;
+    }
+
+    public void setFabricante(String fabricante) {
+        this.fabricante = fabricante;
     }
 
     public String getCor() { // Adicionado de volta
@@ -63,12 +79,20 @@ public class ProdutoDTO {
         this.preco = preco;
     }
 
-    public Integer getQuantidadeEstoque() {
-        return quantidadeEstoque;
+    public Integer getQuantidade() {
+        return quantidade;
     }
 
-    public void setQuantidadeEstoque(Integer quantidadeEstoque) {
-        this.quantidadeEstoque = quantidadeEstoque;
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 
     public String getImagem() { // Adicionado de volta

@@ -1,8 +1,8 @@
 package com.atividade.hackaton.service;
 
+import com.atividade.hackaton.ProdutoRepository;
 import com.atividade.hackaton.dto.ProdutoDTO;
 import com.atividade.hackaton.entity.Produto;
-import com.atividade.hackaton.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -75,6 +75,7 @@ public class ProdutoService {
         produtoDTO.setPreco(produto.getPreco());
         produtoDTO.setQuantidadeEstoque(produto.getQuantidadeEstoque()); // Mantido 'quantidadeEstoque'
         produtoDTO.setImagem(produto.getImagem()); // Adicionado
+
         return produtoDTO;
     }
 }

@@ -1,4 +1,3 @@
-// script.js
 const API_BASE_URL = "http://localhost:8080/api/produtos"; // URL base para a API do backend
 
 // Função para buscar e exibir produtos do backend
@@ -116,23 +115,3 @@ async function deleteProduct(id) {
         }
     }
 }
-
-// Funções para exibir alertas (mantidas como estão, pois são de UI)
-function showAlert(message, type) {
-    const alertDiv = document.createElement('div');
-    alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
-    alertDiv.role = 'alert';
-    alertDiv.innerHTML = `
-        ${message}
-        <button type="button" onclick="closeAlert(this)" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    `;
-    document.getElementById('productList').before(alertDiv);
-    setTimeout(() => alertDiv.remove(), 3000);
-}
-
-function closeAlert(element) {
-    element.closest('.alert').remove();
-}
-
-// Chamar a função para carregar e exibir os produtos ao carregar a página
-document.addEventListener("DOMContentLoaded", fetchAndDisplayProducts);

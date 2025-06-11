@@ -1,5 +1,3 @@
-// Principal/PrincipalJS.js
-
 document.addEventListener("DOMContentLoaded", () => {
     // A variável imageBase64 agora é declarada dentro do escopo do DOMContentLoaded
     // Isso garante que ela esteja disponível quando o DOM estiver completamente carregado

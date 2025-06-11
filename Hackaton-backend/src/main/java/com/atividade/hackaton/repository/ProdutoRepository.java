@@ -1,4 +1,4 @@
-package com.atividade.hackaton.repository;
+package com.atividade.hackaton;
 
 import com.atividade.hackaton.entity.Produto;
 import org.springframework.data.jpa.repository.JpaRepository;

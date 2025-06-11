@@ -16,7 +16,12 @@ public class Produto {
     private String cor;
     private String fabricante;
     private Double preco;
+<<<<<<< HEAD
     private Integer quantidade; // Renomeado para 'quantidade' para corresponder ao SQL fornecido
+=======
+    private Integer quantidade;
+    private String imagem;
+>>>>>>> a903f2f8cfaa73ea7190777acbad244952e7a59b
 
     // Relacionamento One-to-Many com ImagemProduto
     // mappedBy indica o campo na entidade ImagemProduto que gerencia a relação
@@ -42,12 +47,37 @@ public class Produto {
         this.nome = nome;
     }
 
+<<<<<<< HEAD
     public String getDescricao() { // Getter para 'descricao'
         return descricao;
     }
 
     public void setDescricao(String descricao) { // Setter para 'descricao'
         this.descricao = descricao;
+=======
+    public String getTextoDescritivo() {
+        return textoDescritivo;
+    }
+
+    public void setTextoDescritivo(String textoDescritivo) {
+        this.textoDescritivo = textoDescritivo;
+    }
+
+    public String getCor() {
+        return cor;
+    }
+
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
+
+    public String getFabricante() {
+        return fabricante;
+    }
+
+    public void setFabricante(String fabricante) {
+        this.fabricante = fabricante;
+>>>>>>> a903f2f8cfaa73ea7190777acbad244952e7a59b
     }
 
     public String getCor() {
@@ -74,12 +104,29 @@ public class Produto {
         this.preco = preco;
     }
 
+<<<<<<< HEAD
     public Integer getQuantidade() { // Getter para 'quantidade'
         return quantidade;
     }
 
     public void setQuantidade(Integer quantidade) { // Setter para 'quantidade'
         this.quantidade = quantidade;
+=======
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
+>>>>>>> a903f2f8cfaa73ea7190777acbad244952e7a59b
     }
 
     public List<ImagemProduto> getImagens() {

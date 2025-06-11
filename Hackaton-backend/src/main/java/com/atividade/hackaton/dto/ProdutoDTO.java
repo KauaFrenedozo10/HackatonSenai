@@ -32,12 +32,37 @@ public class ProdutoDTO {
         this.nome = nome;
     }
 
+<<<<<<< HEAD
     public String getDescricao() { // Getter para 'descricao'
         return descricao;
     }
 
     public void setDescricao(String descricao) { // Setter para 'descricao'
         this.descricao = descricao;
+=======
+    public String getTextoDescritivo() {
+        return textoDescritivo;
+    }
+
+    public void setTextoDescritivo(String textoDescritivo) {
+        this.textoDescritivo = textoDescritivo;
+    }
+
+    public String getCor() {
+        return cor;
+    }
+
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
+
+    public String getFabricante() {
+        return fabricante;
+    }
+
+    public void setFabricante(String fabricante) {
+        this.fabricante = fabricante;
+>>>>>>> a903f2f8cfaa73ea7190777acbad244952e7a59b
     }
 
     public String getCor() {
@@ -64,12 +89,29 @@ public class ProdutoDTO {
         this.preco = preco;
     }
 
+<<<<<<< HEAD
     public Integer getQuantidade() { // Getter para 'quantidade'
         return quantidade;
     }
 
     public void setQuantidade(Integer quantidade) { // Setter para 'quantidade'
         this.quantidade = quantidade;
+=======
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
+>>>>>>> a903f2f8cfaa73ea7190777acbad244952e7a59b
     }
 
     public List<String> getUrlsImagens() {

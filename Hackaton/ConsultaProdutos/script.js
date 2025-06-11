@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 // script.js
+=======
+>>>>>>> a903f2f8cfaa73ea7190777acbad244952e7a59b
 const API_BASE_URL = "http://localhost:8080/api/produtos"; // URL base para a API do backend
 
 // Função para buscar e exibir produtos do backend
@@ -122,6 +125,7 @@ async function deleteProduct(id) {
             showAlert('Erro ao excluir produto. Tente novamente.', 'danger');
         }
     }
+<<<<<<< HEAD
 }
 
 // Funções para exibir alertas (mantidas como estão, pois são de UI)
@@ -143,3 +147,6 @@ function closeAlert(element) {
 
 // Chamar a função para carregar e exibir os produtos ao carregar a página
 document.addEventListener("DOMContentLoaded", fetchAndDisplayProducts);
+=======
+}
+>>>>>>> a903f2f8cfaa73ea7190777acbad244952e7a59b

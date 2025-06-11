@@ -1,10 +1,14 @@
 package com.atividade.hackaton.service;
 
+import com.atividade.hackaton.ProdutoRepository;
 import com.atividade.hackaton.dto.ProdutoDTO;
 import com.atividade.hackaton.entity.ImagemProduto;
 import com.atividade.hackaton.entity.Produto;
+<<<<<<< HEAD
 import com.atividade.hackaton.repository.ImagemProdutoRepository; // Importar novo repositório
 import com.atividade.hackaton.repository.ProdutoRepository;
+=======
+>>>>>>> a903f2f8cfaa73ea7190777acbad244952e7a59b
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional; // Importar para transações
@@ -103,6 +107,7 @@ public class ProdutoService {
         produtoDTO.setCor(produto.getCor());
         produtoDTO.setFabricante(produto.getFabricante());
         produtoDTO.setPreco(produto.getPreco());
+<<<<<<< HEAD
         produtoDTO.setQuantidade(produto.getQuantidade()); // Corrigido para 'quantidade'
 
         // Mapear URLs das imagens
@@ -115,6 +120,10 @@ public class ProdutoService {
         } else {
             produtoDTO.setUrlsImagens(List.of()); // Retorna lista vazia se não houver imagens
         }
+=======
+        produtoDTO.setQuantidadeEstoque(produto.getQuantidadeEstoque()); // Mantido 'quantidadeEstoque'
+        produtoDTO.setImagem(produto.getImagem()); // Adicionado
+>>>>>>> a903f2f8cfaa73ea7190777acbad244952e7a59b
 
         return produtoDTO;
     }

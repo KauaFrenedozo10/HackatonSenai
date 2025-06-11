@@ -1,5 +1,6 @@
 package com.atividade.hackaton.entity;
 
+import jakarta.persistence.Column; // Importe esta anotação
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,11 +13,14 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private String textoDescritivo;
+    private String descricao;
     private String cor;
     private String fabricante;
     private Double preco;
     private Integer quantidade;
+    private String imagem;
+
+    @Column(columnDefinition = "MEDIUMTEXT") // <--- Adicione esta linha
     private String imagem;
 
     // Getters e Setters
@@ -60,6 +64,22 @@ public class Produto {
         this.fabricante = fabricante;
     }
 
+    public String getCor() {
+        return cor;
+    }
+
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
+
+    public String getFabricante() {
+        return fabricante;
+    }
+
+    public void setFabricante(String fabricante) {
+        this.fabricante = fabricante;
+    }
+
     public Double getPreco() {
         return preco;
     }
@@ -74,6 +94,14 @@ public class Produto {
 
     public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 
     public String getImagem() {

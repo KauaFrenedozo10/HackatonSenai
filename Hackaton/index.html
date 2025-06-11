@@ -12,8 +12,6 @@
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
         <div class="row login-card shadow overflow-hidden rounded-4 w-100" style="max-width: 1100px;">
             <div class="col-md-6 p-5 bg-white">
-                
-
                 <h2 id="mainTitle" class="text-center text-purple mb-4">Cadastrar Produto</h2>
 
                 <div class="text-center mb-4">
@@ -41,12 +39,9 @@
                         <input type="number" step="0.01" class="form-control custom-input ps-5" id="precoInput" placeholder="Preço">
                     </div>
                     <div class="mb-3 position-relative">
-                        <input type="number" class="form-control custom-input ps-5" id="quantidadeInput" placeholder="Quantidade">
-                    </div>
+                        <input type="number" class="form-control custom-input ps-5" id="quantidadeEstoqueInput" placeholder="Quantidade em Estoque"> </div>
                     <button type="submit" class="btn btn-purple w-100 mb-3" id="btnCadastro">Cadastrar</button>
-                    <a href="" class="btn btn-purple w-100 mb-3">Ver Produtos</a>
-              </form>
-
+                    <a href="consulta.html" class="btn btn-purple w-100 mb-3">Ver Produtos</a> </form>
             </div>
 
             <div class="col-md-6 d-none d-md-block p-0">
@@ -54,5 +49,7 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="Principal/PrincipalJS.js"></script>
 </body>
 </html>

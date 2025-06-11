@@ -1,3 +1,5 @@
+// Principal/PrincipalJS.js
+let imagemBase64 = "https://cdn-icons-png.flaticon.com/512/847/847969.png"; // Valor inicial para o avatar padrão
 
 document.addEventListener("DOMContentLoaded", () => {
     function configurarUpload(avatarId, inputId) {
@@ -11,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     const reader = new FileReader();
                     reader.onload = e => {
                         avatar.src = e.target.result;
+                        imageBase64 = e.target.result; // Armazena a imagem em Base64
                     };
                     reader.readAsDataURL(file);
                 }
@@ -27,12 +30,12 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
 
             const nome = document.getElementById("nomeInput");
-            const descricao = document.getElementById("descricaoInput");
+            const descricao = document.getElementById("descricaoInput"); // `descricao` é o ID do input no HTML
             const cor = document.getElementById("corInput");
             const fabricante = document.getElementById("fabricanteInput");
             const preco = document.getElementById("precoInput");
             const quantidade = document.getElementById("quantidadeInput");
-            const fotoInput = document.getElementById("uploadMedico");
+            // const fotoInput = document.getElementById("uploadMedico"); // Não precisamos mais do file input diretamente aqui
 
             // Validação básica
             if (!nome.value.trim() || !descricao.value.trim() || !cor.value.trim() || !fabricante.value.trim() || !preco.value.trim() || !quantidade.value.trim()) {
@@ -40,31 +43,27 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            if (!fotoInput.files || fotoInput.files.length === 0) {
-                alert("Por favor, selecione uma imagem do produto.");
-                return;
-            }
+            // Não é mais necessário verificar fotoInput.files, pois a imagem já estaria no `imageBase64`
+            // if (!fotoInput.files || fotoInput.files.length === 0) {
+            //     alert("Por favor, selecione uma imagem do produto.");
+            //     return;
+            // }
 
-            const formData = new FormData();
             const produtoDTO = {
                 nome: nome.value.trim(),
-                descricao: descricao.value.trim(),
+                textoDescritivo: descricao.value.trim(), // CORREÇÃO AQUI
                 cor: cor.value.trim(),
                 fabricante: fabricante.value.trim(),
                 preco: parseFloat(preco.value.trim()),
                 quantidade: parseInt(quantidade.value.trim(), 10),
-                imagem: "temporario"
+                imagem: imagemBase64 // Envia a imagem em Base64
             };
 
-            formData.append("imagem", fotoInput.files[0]);
-            formData.append("produtoDTO", new Blob([JSON.stringify(produtoDTO)], {
-                type: "application/json"
-            }));
-
             try {
-                const response = await axios.post("localhost:8080/api/produtos", formData, {
+                // Remove FormData e envia JSON diretamente
+                const response = await axios.post("http://localhost:8080/api/produtos", produtoDTO, {
                     headers: {
-                        "Content-Type": "multipart/form-data"
+                        "Content-Type": "application/json" // Define o Content-Type como JSON
                     }
                 });
 
@@ -72,8 +71,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.log(response.data);
                 form.reset();
                 document.getElementById('avatarMedico').src = "https://cdn-icons-png.flaticon.com/512/847/847969.png";
+                imageBase64 = "https://cdn-icons-png.flaticon.com/512/847/847969.png"; // Reseta a imagem Base64
             } catch (error) {
-                console.error(error);
+                console.error("Erro na requisição:", error.response ? error.response.data : error.message);
                 alert("Erro ao cadastrar produto. Verifique os dados e tente novamente.");
             }
         });

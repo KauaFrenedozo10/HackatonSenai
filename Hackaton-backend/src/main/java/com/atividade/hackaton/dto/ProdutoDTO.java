@@ -1,6 +1,5 @@
 package com.atividade.hackaton.dto;
 
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ProdutoDTO {
@@ -8,9 +7,12 @@ public class ProdutoDTO {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long id;
     private String nome;
-    private String descricao;
+    private String descricao; // Mantido como 'descricao'
+    private String cor; // Adicionado de volta
+    private String fabricante; // Adicionado de volta
     private Double preco;
-    private Integer quantidadeEstoque;
+    private Integer quantidadeEstoque; // Mantido como 'quantidadeEstoque'
+    private String imagem; // Adicionado de volta
 
     // Getters e Setters
     public Long getId() {
@@ -37,6 +39,22 @@ public class ProdutoDTO {
         this.descricao = descricao;
     }
 
+    public String getCor() { // Adicionado de volta
+        return cor;
+    }
+
+    public void setCor(String cor) { // Adicionado de volta
+        this.cor = cor;
+    }
+
+    public String getFabricante() { // Adicionado de volta
+        return fabricante;
+    }
+
+    public void setFabricante(String fabricante) { // Adicionado de volta
+        this.fabricante = fabricante;
+    }
+
     public Double getPreco() {
         return preco;
     }
@@ -51,5 +69,13 @@ public class ProdutoDTO {
 
     public void setQuantidadeEstoque(Integer quantidadeEstoque) {
         this.quantidadeEstoque = quantidadeEstoque;
+    }
+
+    public String getImagem() { // Adicionado de volta
+        return imagem;
+    }
+
+    public void setImagem(String imagem) { // Adicionado de volta
+        this.imagem = imagem;
     }
 }

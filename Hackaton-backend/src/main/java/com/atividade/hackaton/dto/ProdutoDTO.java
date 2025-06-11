@@ -1,18 +1,19 @@
 package com.atividade.hackaton.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List; // Importar List
 
 public class ProdutoDTO {
 
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long id;
     private String nome;
-    private String descricao; // Mantido como 'descricao'
-    private String cor; // Adicionado de volta
-    private String fabricante; // Adicionado de volta
+    private String descricao; // Alterado de textoDescritivo para descricao para alinhar com o SQL
+    private String cor;
+    private String fabricante;
     private Double preco;
-    private Integer quantidadeEstoque; // Mantido como 'quantidadeEstoque'
-    private String imagem; // Adicionado de volta
+    private Integer quantidade; // Renomeado para 'quantidade' para corresponder ao SQL fornecido
+    private List<String> urlsImagens; // Adicionado para lidar com múltiplas URLs de imagem
 
     // Getters e Setters
     public Long getId() {
@@ -31,27 +32,27 @@ public class ProdutoDTO {
         this.nome = nome;
     }
 
-    public String getDescricao() {
+    public String getDescricao() { // Getter para 'descricao'
         return descricao;
     }
 
-    public void setDescricao(String descricao) {
+    public void setDescricao(String descricao) { // Setter para 'descricao'
         this.descricao = descricao;
     }
 
-    public String getCor() { // Adicionado de volta
+    public String getCor() {
         return cor;
     }
 
-    public void setCor(String cor) { // Adicionado de volta
+    public void setCor(String cor) {
         this.cor = cor;
     }
 
-    public String getFabricante() { // Adicionado de volta
+    public String getFabricante() {
         return fabricante;
     }
 
-    public void setFabricante(String fabricante) { // Adicionado de volta
+    public void setFabricante(String fabricante) {
         this.fabricante = fabricante;
     }
 
@@ -63,19 +64,19 @@ public class ProdutoDTO {
         this.preco = preco;
     }
 
-    public Integer getQuantidadeEstoque() {
-        return quantidadeEstoque;
+    public Integer getQuantidade() { // Getter para 'quantidade'
+        return quantidade;
     }
 
-    public void setQuantidadeEstoque(Integer quantidadeEstoque) {
-        this.quantidadeEstoque = quantidadeEstoque;
+    public void setQuantidade(Integer quantidade) { // Setter para 'quantidade'
+        this.quantidade = quantidade;
     }
 
-    public String getImagem() { // Adicionado de volta
-        return imagem;
+    public List<String> getUrlsImagens() {
+        return urlsImagens;
     }
 
-    public void setImagem(String imagem) { // Adicionado de volta
-        this.imagem = imagem;
+    public void setUrlsImagens(List<String> urlsImagens) {
+        this.urlsImagens = urlsImagens;
     }
 }

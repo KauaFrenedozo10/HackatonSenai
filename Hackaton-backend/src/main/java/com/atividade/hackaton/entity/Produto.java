@@ -1,27 +1,34 @@
 package com.atividade.hackaton.entity;
 
-import jakarta.persistence.Column; // Importe esta anotação
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
+@Table(name = "produtos") // Garante que o nome da tabela seja 'produtos'
 public class Produto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private String descricao;
+    private String descricao; // Alterado de textoDescritivo para descricao para alinhar com DTO e frontend
     private String cor;
     private String fabricante;
     private Double preco;
+<<<<<<< HEAD
+    private Integer quantidade; // Renomeado para 'quantidade' para corresponder ao SQL fornecido
+=======
     private Integer quantidade;
     private String imagem;
+>>>>>>> a903f2f8cfaa73ea7190777acbad244952e7a59b
 
-    @Column(columnDefinition = "MEDIUMTEXT") // <--- Adicione esta linha
-    private String imagem;
+    // Relacionamento One-to-Many com ImagemProduto
+    // mappedBy indica o campo na entidade ImagemProduto que gerencia a relação
+    // CascadeType.ALL significa que operações (persist, remove, merge, etc.) em Produto serão propagadas para ImagemProduto
+    // orphanRemoval = true garante que imagens órfãs (desassociadas de um produto) sejam removidas
+    @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<ImagemProduto> imagens = new ArrayList<>();
 
     // Getters e Setters
     public Long getId() {
@@ -40,6 +47,14 @@ public class Produto {
         this.nome = nome;
     }
 
+<<<<<<< HEAD
+    public String getDescricao() { // Getter para 'descricao'
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) { // Setter para 'descricao'
+        this.descricao = descricao;
+=======
     public String getTextoDescritivo() {
         return textoDescritivo;
     }
@@ -62,6 +77,7 @@ public class Produto {
 
     public void setFabricante(String fabricante) {
         this.fabricante = fabricante;
+>>>>>>> a903f2f8cfaa73ea7190777acbad244952e7a59b
     }
 
     public String getCor() {
@@ -88,6 +104,14 @@ public class Produto {
         this.preco = preco;
     }
 
+<<<<<<< HEAD
+    public Integer getQuantidade() { // Getter para 'quantidade'
+        return quantidade;
+    }
+
+    public void setQuantidade(Integer quantidade) { // Setter para 'quantidade'
+        this.quantidade = quantidade;
+=======
     public Integer getQuantidade() {
         return quantidade;
     }
@@ -102,13 +126,30 @@ public class Produto {
 
     public void setImagem(String imagem) {
         this.imagem = imagem;
+>>>>>>> a903f2f8cfaa73ea7190777acbad244952e7a59b
     }
 
-    public String getImagem() {
-        return imagem;
+    public List<ImagemProduto> getImagens() {
+        return imagens;
     }
 
-    public void setImagem(String imagem) {
-        this.imagem = imagem;
+    public void setImagens(List<ImagemProduto> imagens) {
+        this.imagens = imagens;
+        // Garante que o lado 'filho' (ImagemProduto) tenha a referência correta ao 'pai' (Produto)
+        for (ImagemProduto imagem : imagens) {
+            imagem.setProduto(this);
+        }
+    }
+
+    // Método de conveniência para adicionar uma única imagem
+    public void addImagem(ImagemProduto imagem) {
+        this.imagens.add(imagem);
+        imagem.setProduto(this);
+    }
+
+    // Método de conveniência para remover uma única imagem
+    public void removeImagem(ImagemProduto imagem) {
+        this.imagens.remove(imagem);
+        imagem.setProduto(null);
     }
 }

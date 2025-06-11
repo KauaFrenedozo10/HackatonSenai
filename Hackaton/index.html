@@ -12,13 +12,17 @@
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
         <div class="row login-card shadow overflow-hidden rounded-4 w-100" style="max-width: 1100px;">
             <div class="col-md-6 p-5 bg-white">
+                
                 <h2 id="mainTitle" class="text-center text-purple mb-4">Cadastrar Produto</h2>
 
                 <div class="text-center mb-4">
-                     <img id="avatarMedico" src="https://cdn-icons-png.flaticon.com/512/847/847969.png" width="100" class="rounded-circle mb-2" alt="avatar">
+                     <!-- Agora o input de imagem é um campo de texto para URL -->
+                     <img id="avatarMedico" src="https://cdn-icons-png.flaticon.com/512/847/847969.png" width="100" class="rounded-circle mb-2" alt="Pré-visualização da imagem">
                      <div>
-                         <i class="bi bi-plus-circle-fill text-purple" style="cursor: pointer;" onclick="document.getElementById('uploadMedico').click();"></i>
-                         <input type="file" id="uploadMedico" style="display: none;" accept="image/*">
+                         <!-- Removido o clique direto, o input de texto será o principal -->
+                         <input type="text" class="form-control custom-input mt-2" id="imageUrlInput" placeholder="URL da Imagem">
+                         <!-- O uploadMedico não é mais um input de arquivo, mas vamos mantê-lo para a pré-visualização.
+                              O PrincipalJS.js vai monitorar 'imageUrlInput' para atualização da imagem. -->
                      </div>
                  </div>
 
@@ -39,16 +43,20 @@
                         <input type="number" step="0.01" class="form-control custom-input ps-5" id="precoInput" placeholder="Preço">
                     </div>
                     <div class="mb-3 position-relative">
-                        <input type="number" class="form-control custom-input ps-5" id="quantidadeEstoqueInput" placeholder="Quantidade em Estoque"> </div>
+                        <input type="number" class="form-control custom-input ps-5" id="quantidadeInput" placeholder="Quantidade"> <!-- ID alterado para quantidadeInput -->
+                    </div>
                     <button type="submit" class="btn btn-purple w-100 mb-3" id="btnCadastro">Cadastrar</button>
-                    <a href="consulta.html" class="btn btn-purple w-100 mb-3">Ver Produtos</a> </form>
+                    <a href="ConsultaProdutos/consulta.html" class="btn btn-purple w-100 mb-3">Ver Produtos</a>
+              </form>
+
             </div>
 
             <div class="col-md-6 d-none d-md-block p-0">
-                <img src="Recursos/cadastroIMG.jpg" alt="Imagem terapêutica" class="img-fluid h-100 w-100 object-fit-cover">
+                <img src="Recursos/foto.png" alt="Imagem Eletrônicos" class="img-fluid h-100 w-100 object-fit-cover">
             </div>
         </div>
     </div>
+    <!-- Script do Axios para requisições HTTP -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="Principal/PrincipalJS.js"></script>
 </body>

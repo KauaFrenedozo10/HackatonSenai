@@ -1,3 +1,4 @@
+// script.js
 const API_BASE_URL = "http://localhost:8080/api/produtos"; // URL base para a API do backend
 
 // Função para buscar e exibir produtos do backend
@@ -15,16 +16,23 @@ async function fetchAndDisplayProducts() {
         }
 
         products.forEach(product => {
+            // Pega a primeira URL de imagem ou um placeholder se não houver
+            const imageUrl = product.urlsImagens && product.urlsImagens.length > 0
+                             ? product.urlsImagens[0]
+                             : 'https://via.placeholder.com/180';
+
             const productCard = `
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
-                        <img src="${product.imagem || 'https://via.placeholder.com/180'}" class="card-img-top" alt="${product.nome}">
+                        <img src="${imageUrl}" class="card-img-top" alt="${product.nome}">
                         <div class="card-body">
                             <h5 class="card-title">${product.nome}</h5>
-                            <p class="card-text">${product.descricao}</p> <p class="card-text"><strong>Cor:</strong> ${product.cor}</p>
+                            <p class="card-text">${product.descricao}</p>
+                            <p class="card-text"><strong>Cor:</strong> ${product.cor}</p>
                             <p class="card-text"><strong>Fabricante:</strong> ${product.fabricante}</p>
                             <p class="card-text"><strong>Preço:</strong> R$${product.preco ? product.preco.toFixed(2) : 'N/A'}</p>
-                            <p class="card-text"><strong>Quantidade em Estoque:</strong> ${product.quantidadeEstoque}</p> <div class="d-flex justify-content-between">
+                            <p class="card-text"><strong>Quantidade:</strong> ${product.quantidade}</p> <!-- Campo 'quantidade' -->
+                            <div class="d-flex justify-content-between">
                                 <button class="btn btn-primary" onclick="editProduct(${product.id})">Editar</button>
                                 <button class="btn btn-danger" onclick="deleteProduct(${product.id})">Excluir</button>
                             </div>
@@ -49,11 +57,16 @@ async function editProduct(id) {
 
         document.getElementById('editId').value = product.id;
         document.getElementById('editNome').value = product.nome;
-        document.getElementById('editDescricao').value = product.descricao; // Campo 'descricao'
+        document.getElementById('editDescricao').value = product.descricao;
         document.getElementById('editCor').value = product.cor;
         document.getElementById('editFabricante').value = product.fabricante;
         document.getElementById('editPreco').value = product.preco;
-        document.getElementById('editQuantidadeEstoque').value = product.quantidadeEstoque; // Campo 'quantidadeEstoque'
+        document.getElementById('editQuantidade').value = product.quantidade; // Campo 'quantidade'
+        
+        // Preenche o campo de URL da imagem com a primeira imagem, se houver
+        document.getElementById('editImageUrl').value = product.urlsImagens && product.urlsImagens.length > 0 
+                                                         ? product.urlsImagens[0] 
+                                                         : '';
 
         const modal = new bootstrap.Modal(document.getElementById('editModal'));
         modal.show();
@@ -68,27 +81,22 @@ document.getElementById('editForm').addEventListener('submit', async function(e)
     e.preventDefault();
     const id = parseInt(document.getElementById('editId').value);
 
-    // Rebusca o produto para garantir que temos a imagem original se não houver um campo de edição de imagem
-    let originalProduct;
-    try {
-        const response = await axios.get(`${API_BASE_URL}/${id}`);
-        originalProduct = response.data;
-    } catch (error) {
-        console.error("Erro ao recuperar imagem original para edição:", error);
-        showAlert('Erro ao preparar edição. Tente novamente.', 'danger');
-        return;
-    }
-
     const updatedProduct = {
         id: id,
         nome: document.getElementById('editNome').value.trim(),
-        descricao: document.getElementById('editDescricao').value.trim(), // Campo 'descricao'
+        descricao: document.getElementById('editDescricao').value.trim(),
         cor: document.getElementById('editCor').value.trim(),
         fabricante: document.getElementById('editFabricante').value.trim(),
         preco: parseFloat(document.getElementById('editPreco').value.trim()),
-        quantidadeEstoque: parseInt(document.getElementById('editQuantidadeEstoque').value.trim(), 10), // Campo 'quantidadeEstoque'
-        imagem: originalProduct.imagem // Mantém a imagem original, pois não há campo de upload no modal
+        quantidade: parseInt(document.getElementById('editQuantidade').value.trim(), 10), // Campo 'quantidade'
+        urlsImagens: [document.getElementById('editImageUrl').value.trim()] // Envia a URL da imagem como uma lista
     };
+
+    // Validação básica para a URL da imagem
+    if (!updatedProduct.urlsImagens[0]) {
+        showAlert('Por favor, insira a URL da imagem do produto.', 'warning');
+        return;
+    }
 
     try {
         await axios.put(`${API_BASE_URL}/${id}`, updatedProduct); // Requisição PUT para atualizar
@@ -115,3 +123,23 @@ async function deleteProduct(id) {
         }
     }
 }
+
+// Funções para exibir alertas (mantidas como estão, pois são de UI)
+function showAlert(message, type) {
+    const alertDiv = document.createElement('div');
+    alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
+    alertDiv.role = 'alert';
+    alertDiv.innerHTML = `
+        ${message}
+        <button type="button" onclick="closeAlert(this)" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    `;
+    document.getElementById('productList').before(alertDiv);
+    setTimeout(() => alertDiv.remove(), 3000);
+}
+
+function closeAlert(element) {
+    element.closest('.alert').remove();
+}
+
+// Chamar a função para carregar e exibir os produtos ao carregar a página
+document.addEventListener("DOMContentLoaded", fetchAndDisplayProducts);
